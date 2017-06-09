@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Gewei's Blog</title><link href="https://geweiwang.github.io/" rel="alternate"></link><link href="https://geweiwang.github.io/atom.xml" rel="self"></link><id>https://geweiwang.github.io/</id><updated>2017-05-24T00:00:00-04:00</updated><entry><title>Beijing Property Market</title><link href="https://geweiwang.github.io/2017/05/beijing-property-market.html" rel="alternate"></link><published>2017-05-24T00:00:00-04:00</published><updated>2017-05-24T00:00:00-04:00</updated><author><name>Gewei Wang</name></author><id>tag:geweiwang.github.io,2017-05-24:/2017/05/beijing-property-market.html</id><summary type="html">&lt;p&gt;Beijing home prices on a map&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+&lt;h3&gt;Introduction&lt;/h3&gt;
+&lt;p&gt;This is a choropleth map of Beijing home prices.&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;
+&lt;iframe src="/res/Beijing_property_market_slider.html" height="900" width="100%" frameborder="0" scrolling="no"&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;
+&lt;em&gt;About the data&lt;br&gt;
+The data of 2017 is scraped from web.&lt;br&gt;
+The data of 2016 and 2018 is fake.&lt;/em&gt;&lt;/p&gt;</content><category term="Visualization"></category><category term="Bokeh"></category><category term="Python"></category></entry><entry><title>German credit data by Apache Spark 2 on databricks</title><link href="https://geweiwang.github.io/2017/01/german-credit-data-by-apache-spark-2-on-databricks.html" rel="alternate"></link><published>2017-01-05T00:00:00-05:00</published><updated>2017-01-05T00:00:00-05:00</updated><author><name>Gewei Wang</name></author><id>tag:geweiwang.github.io,2017-01-05:/2017/01/german-credit-data-by-apache-spark-2-on-databricks.html</id><summary type="html">&lt;p&gt;German data by Spark 2&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+&lt;h3&gt;Introduction&lt;/h3&gt;
+&lt;p&gt;Notebook on databricks&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;
+&lt;iframe src="/res/German_data_post.html" height="9000" width="100%" frameborder="0" scrolling="no"&gt;&lt;/iframe&gt;&lt;/p&gt;</content><category term="Big data"></category><category term="Spark"></category><category term="Python"></category></entry><entry><title>DataThon!</title><link href="https://geweiwang.github.io/2016/12/datathon.html" rel="alternate"></link><published>2016-12-03T00:00:00-05:00</published><updated>2016-12-03T00:00:00-05:00</updated><author><name>Gewei Wang</name></author><id>tag:geweiwang.github.io,2016-12-03:/2016/12/datathon.html</id><summary type="html">&lt;p&gt;Data for Good teaming up with Raising the Roof held a DataThon on Saturday in Toronto. I was glad to take part in it. It was 12-hour data crunching on about 20 data sets. In this post, we'll deal with one of them -- a donation Excel file. We're going to explore and clean it, create a new feature, and finally do donation frequency analysis. &lt;br&gt;&lt;br&gt; &lt;img alt="datathon picture" src="/res/datathon_pic_post.jpg"&gt; &lt;em&gt;&lt;center&gt;&lt;font size=1&gt;source: Data for Good&lt;/font&gt;&lt;/center&gt;&lt;/em&gt;&lt;/p&gt;</summary><content type="html">&lt;iframe src="/res/dataThon.html" frameborder="0" scrolling="no" width="100%" onload="resizeIframe(this)" /&gt;</content><category term="Python"></category><category term="Data For Good"></category></entry><entry><title>A Case Study of TDD in Data Analysis</title><link href="https://geweiwang.github.io/2016/09/a-case-study-of-tdd-in-data-analysis.html" rel="alternate"></link><published>2016-09-03T00:00:00-04:00</published><updated>2016-09-03T00:00:00-04:00</updated><author><name>Gewei Wang</name></author><id>tag:geweiwang.github.io,2016-09-03:/2016/09/a-case-study-of-tdd-in-data-analysis.html</id><summary type="html">&lt;p&gt;Test-driven development (TDD) uses agile and lean approaches and test-first practice instead of testing near the end of a development cycle. In this post we will use a simplified example of association rules in retail industry to illustrate TDD in data analysis. &lt;br&gt;&lt;br&gt; &lt;img alt="explain cte" src="/res/explain_cte_baskets.png"&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+&lt;h3&gt;Introduction&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Test-driven_development" target="_blank"&gt;Test-driven development (TDD)&lt;/a&gt; uses agile and lean approaches and test-first practice instead of testing near the end of a development cycle. In this post we will use a simplified example of association rules in retail industry to illustrate TDD in data analysis.&lt;/p&gt;
+&lt;p&gt;The common metrics for association rules are support, confidence and lift, however, we'll see sometimes these are not enough to ensure rules extracted are correct. Before diving into details, let's give our test-driven data analysis a brief definition:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Short analysis cycle. Begining with simple cases, we'll generate one-way association rules.&lt;/li&gt;
+&lt;li&gt;Use so simple but real data that we can extract rules quickly and check them easily.&lt;/li&gt;
+&lt;li&gt;Write a failing test to check the rules.&lt;/li&gt;
+&lt;li&gt;Refactor the original code to make the failing test pass.&lt;/li&gt;
+&lt;li&gt;[&lt;em&gt;Next iteration&lt;/em&gt;]&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+&lt;h3&gt;Generate one-way rules on clean data&lt;/h3&gt;
+&lt;p&gt;Association rules is unsupervised learning techniques which try to find useful patterns in transaction data. The simplest rules are one-way rules, for example, customers buy product A are likely to buy product B at the same time.&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;
+Suppose we have a receipt from a grocery store called &lt;strong&gt;Neat&lt;/strong&gt;, and we'll derive one-way associaton rules for the store using SQL. Let's take a look at the data. The entity-relationship (ER) diagram of Neat data is also given.&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;A receipt of store Neat&lt;br&gt;&lt;br&gt;&lt;/th&gt;
+&lt;th&gt;The entity-relationship diagram of Neat data&lt;br&gt;&lt;br&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;img alt src="/res/receipt_neat.png"&gt;&lt;/td&gt;
+&lt;td&gt;&lt;img alt src="/res/ER_neat.png"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+&lt;h4&gt;Insert the Neat data on the receipt into database&lt;/h4&gt;
+&lt;p&gt;&lt;font size=2&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;products_neat&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;                   &lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;orders_neat&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;      &lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;order_items_neat&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;product_id | name             | category       order_id | order_date           order_item_id | order_id | product_id | quantity
+-----------+------------------+----------      ---------+-----------           --------------+----------+------------+---------
+6148301460 | CARROTS 3LB      | PRODUCE        100      | 2016-01-01             1           | 100      | 6148301460 |  1
+4053       | LEMON            | PRODUCE                                          2           | 100      | 4053       |  2
+4065       | PEPPER GREEN SWT | PRODUCE                                          3           | 100      | 4065       |  1
+2193860    | CHICKEN LEG BA   | MEATS                                            4           | 100      | 2193860    |  1
+6340002536 | WOND BREAD WW    | BAKERY                                           5           | 100      | 6340002536 |  1
+6340011169 | WHL WHT FIBR BRD | BAKERY                                           6           | 100      | 6340011169 |  1
+5719732951 | ROOSTER TOFU     | DELI                                             7           | 100      | 5719732951 |  3
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+&lt;h4&gt;One-way association rules for Neat&lt;/h4&gt;
+&lt;p&gt;Because of the data schemas of Neat, the three SQL commands give us the same results but use different execution time.
+&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;only &lt;code&gt;SELECT&lt;/code&gt;&lt;/th&gt;
+&lt;th&gt;using &lt;code&gt;GROUP BY&lt;/code&gt;&lt;/th&gt;
+&lt;th&gt;using &lt;code&gt;DISTINCT&lt;/code&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;SELECT order_id, product_id FROM order_items_neat;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;SELECT order_id, product_id FROM order_items_neat GROUP BY order_id, product_id;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;SELECT DISTINCT order_id, product_id FROM order_items_neat;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;img alt src="/res/explain_analyze.png"&gt;&lt;/td&gt;
+&lt;td&gt;&lt;img alt src="/res/explain_analyze_groupby.png"&gt;&lt;/td&gt;
+&lt;td&gt;&lt;img alt src="/res/explain_analyze_distinct.png"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;br&gt;&lt;br&gt;
+&lt;strong&gt;The three commands give the same result&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font size=2&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;order_id | product_id
+---------+-----------
+ 100     | 6148301460
+ 100     | 4053
+ 100     | 4065
+ 100     | 2193860
+ 100     | 6340002536
+ 100     | 6340011169
+ 100     | 5719732951
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;
+We see the SQL with only &lt;code&gt;SELECT&lt;/code&gt; is faster than the one using &lt;code&gt;GROUP BY&lt;/code&gt;, which is faster than the one using &lt;code&gt;DISTINCE&lt;/code&gt;. The data used here is just one transaction. When we have millions of tranaction records, the difference could be even more pronounced. So we decide to use the SQL without GROUP BY or DISTINCT in the common table expression (CTE) &lt;code&gt;baskets&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cm"&gt;/*&lt;/span&gt;
+&lt;span class="cm"&gt;Extract one-way association rules for stores Neat and Messy.&lt;/span&gt;
+&lt;span class="cm"&gt;Compare the differences between no GROUP BY and using GROUP BY in CTE baskets&lt;/span&gt;
+&lt;span class="cm"&gt;Only change the CTE baskets for different scenarios.&lt;/span&gt;
+&lt;span class="cm"&gt;The CTE rules and the main SELECT clause are common parts.&lt;/span&gt;
+&lt;span class="cm"&gt;*/&lt;/span&gt;
+
+&lt;span class="k"&gt;WITH&lt;/span&gt; &lt;span class="n"&gt;baskets&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="c1"&gt;-- baskets of store Neat&lt;/span&gt;
+    &lt;span class="c1"&gt;-- without GROUP BY or DISTINCT&lt;/span&gt;
+    &lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;oi&lt;/span&gt;&lt;span class="mf"&gt;.&lt;/span&gt;&lt;span class="n"&gt;order_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;oi&lt;/span&gt;&lt;span class="mf"&gt;.&lt;/span&gt;&lt;span class="n"&gt;product_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="mf"&gt;.&lt;/span&gt;&lt;span class="k"&gt;name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+           &lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;OVER&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;PARTITION&lt;/span&gt; &lt;span class="k"&gt;BY&lt;/span&gt; &lt;span class="n"&gt;oi&lt;/span&gt;&lt;span class="mf"&gt;.&lt;/span&gt;&lt;span class="n"&gt;product_id&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;cnt&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+           &lt;span class="n"&gt;tot_order&lt;/span&gt;
+    &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;order_items_neat&lt;/span&gt; &lt;span class="n"&gt;oi&lt;/span&gt;
+        &lt;span class="k"&gt;INNER&lt;/span&gt; &lt;span class="k"&gt;JOIN&lt;/span&gt; &lt;span class="n"&gt;products_neat&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="k"&gt;ON&lt;/span&gt; &lt;span class="n"&gt;oi&lt;/span&gt;&lt;span class="mf"&gt;.&lt;/span&gt;&lt;span class="n"&gt;product_id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="mf"&gt;.&lt;/span&gt;&lt;span class="n"&gt;product_id&lt;/span&gt;
+        &lt;span class="k"&gt;CROSS&lt;/span&gt; &lt;span class="k"&gt;JOIN&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;COUNT&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;DISTINCT&lt;/span&gt; &lt;span class="n"&gt;order_id&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;tot_order&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;order_items_neat&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;t&lt;/span&gt;
+&lt;span class="p"&gt;),&lt;/span&gt;
+
+&lt;span class="c1"&gt;-- The code below is common for different baskets&lt;/span&gt;
+&lt;span class="n"&gt;rules&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="c1"&gt;-- ls: left sides of association rules&lt;/span&gt;
+    &lt;span class="c1"&gt;-- rs: right sides of association rules&lt;/span&gt;
+    &lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;ls&lt;/span&gt;&lt;span class="mf"&gt;.&lt;/span&gt;&lt;span class="n"&gt;product_id&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;ls_pid&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;rs&lt;/span&gt;&lt;span class="mf"&gt;.&lt;/span&gt;&lt;span class="n"&gt;product_id&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;rs_pid&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+           &lt;span class="n"&gt;ls&lt;/span&gt;&lt;span class="mf"&gt;.&lt;/span&gt;&lt;span class="k"&gt;name&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;ls_name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;rs&lt;/span&gt;&lt;span class="mf"&gt;.&lt;/span&gt;&lt;span class="k"&gt;name&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;rs_name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+           &lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;cnt_ls_rs&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+           &lt;span class="n"&gt;max&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ls&lt;/span&gt;&lt;span class="mf"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cnt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;cnt_ls&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;max&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rs&lt;/span&gt;&lt;span class="mf"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cnt&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;cnt_rs&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+           &lt;span class="n"&gt;max&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ls&lt;/span&gt;&lt;span class="mf"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tot_order&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;tot_order&lt;/span&gt;
+    &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;baskets&lt;/span&gt; &lt;span class="n"&gt;ls&lt;/span&gt; &lt;span class="k"&gt;JOIN&lt;/span&gt;
+         &lt;span class="n"&gt;baskets&lt;/span&gt; &lt;span class="n"&gt;rs&lt;/span&gt; &lt;span class="k"&gt;ON&lt;/span&gt; &lt;span class="n"&gt;ls&lt;/span&gt;&lt;span class="mf"&gt;.&lt;/span&gt;&lt;span class="n"&gt;order_id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;rs&lt;/span&gt;&lt;span class="mf"&gt;.&lt;/span&gt;&lt;span class="n"&gt;order_id&lt;/span&gt;
+                   &lt;span class="k"&gt;AND&lt;/span&gt; &lt;span class="n"&gt;ls&lt;/span&gt;&lt;span class="mf"&gt;.&lt;/span&gt;&lt;span class="n"&gt;product_id&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="n"&gt;rs&lt;/span&gt;&lt;span class="mf"&gt;.&lt;/span&gt;&lt;span class="n"&gt;product_id&lt;/span&gt;
+    &lt;span class="k"&gt;GROUP&lt;/span&gt; &lt;span class="k"&gt;BY&lt;/span&gt; &lt;span class="n"&gt;ls&lt;/span&gt;&lt;span class="mf"&gt;.&lt;/span&gt;&lt;span class="n"&gt;product_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;rs&lt;/span&gt;&lt;span class="mf"&gt;.&lt;/span&gt;&lt;span class="n"&gt;product_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ls_name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;rs_name&lt;/span&gt;      
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;%-20s =&amp;gt; %20s&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ls_name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;rs_name&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;rules&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+       &lt;span class="n"&gt;round&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;1.0&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;cnt_rs&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;tot_order&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;expectation&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;   &lt;span class="c1"&gt;-- Expectation of right side&lt;/span&gt;
+       &lt;span class="n"&gt;round&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;1.0&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;cnt_ls_rs&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;tot_order&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;support&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;    &lt;span class="c1"&gt;-- Support of the rule: {left side} =&amp;gt; {right side}&lt;/span&gt;
+       &lt;span class="n"&gt;round&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;1.0&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;cnt_ls_rs&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;cnt_ls&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;confidence&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;    &lt;span class="c1"&gt;-- Confidence of the rule&lt;/span&gt;
+       &lt;span class="n"&gt;round&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;1.0&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;cnt_ls_rs&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;tot_order&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cnt_ls&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;cnt_rs&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="mf"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;lift&lt;/span&gt;  &lt;span class="c1"&gt;-- Lift of the rule&lt;/span&gt;
+&lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;rules&lt;/span&gt;
+&lt;span class="k"&gt;ORDER&lt;/span&gt; &lt;span class="k"&gt;BY&lt;/span&gt; &lt;span class="n"&gt;lift&lt;/span&gt; &lt;span class="k"&gt;DESC&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;confidence&lt;/span&gt; &lt;span class="k"&gt;DESC&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;support&lt;/span&gt; &lt;span class="k"&gt;DESC&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;br&gt;
+As we expect, all values of three metrics (support, confidence, and lift) are 1 because we only have one order. The first three rows are:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;                   rules                     | expectation | support | confidence | lift
+---------------------------------------------+-------------+---------+------------+------
+CARROTS 3LB          =&amp;gt;   PEPPER GREEN SWT   | 1.00        | 1.00    | 1.00       | 1.00
+LEMON                =&amp;gt;   CARROTS 3LB        | 1.00        | 1.00    | 1.00       | 1.00
+ROOSTER TOFU         =&amp;gt;   PEPPER GREEN SWT   | 1.00        | 1.00    | 1.00       | 1.00
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;h3&gt;Write a failing test&lt;/h3&gt;
+&lt;p&gt;Suppose Neat has acquired another grocery store called &lt;strong&gt;Messy&lt;/strong&gt;. We'll apply the code of Neat to the data of Messy to see if it works. Let's look at the new data.
+&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;A receipt of store Messy&lt;br&gt;&lt;br&gt;&lt;/th&gt;
+&lt;th&gt;The entity-relationship diagram of Messy data&lt;br&gt;&lt;br&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;img alt src="/res/receipt_messy.jpg"&gt;&lt;/td&gt;
+&lt;td&gt;&lt;img alt src="/res/ER_messy.png"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;br&gt;
+We can see two receipts represent different database schemas.&lt;/p&gt;
+&lt;h4&gt;Insert the Messy data on the receipt into database&lt;/h4&gt;
+&lt;p&gt;&lt;font size=2&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;products_messy&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;                 &lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;orders_messy&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;       &lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;order_items_messy&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;product_id | name         | category          order_id | order_date             order_item_id | order_id | product_id | quantity
+-----------+--------------+----------         ---------+-----------             --------------+----------+------------+---------
+2305       | KRO WHL MLK  | DAIRY             200      | 2016-01-01               1           | 200      | 2305       |  1
+2306       | KRO SKM MLK  | DAIRY                                                 2           | 200      | 2305       |  1
+2307       | ROMA TOMATO  | PRODUCE                                               3           | 200      | 2305       |  1
+2308       | KRO TKY GRND | NA                                                    4           | 200      | 2305       |  1
+                                                                                  5           | 200      | 2306       |  1
+                                                                                  6           | 200      | 2306       |  1
+                                                                                  7           | 200      | 2306       |  1
+                                                                                  8           | 200      | 2306       |  1
+                                                                                  9           | 200      | 2307       |  1
+                                                                                 10           | 200      | 2308       |  1  
+                                                                                 11           | 200      | 2308       |  1  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;
+Then we apply the SQL code of Neat to the Messy data. We only need to change the common table expression (CTE) &lt;code&gt;baskets&lt;/code&gt; to:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;WITH&lt;/span&gt; &lt;span class="n"&gt;baskets&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="c1"&gt;-- baskets of store Messy&lt;/span&gt;
+    &lt;span class="c1"&gt;-- without GROUP BY or DISTINCT&lt;/span&gt;
+    &lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;oi&lt;/span&gt;&lt;span class="mf"&gt;.&lt;/span&gt;&lt;span class="n"&gt;order_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;oi&lt;/span&gt;&lt;span class="mf"&gt;.&lt;/span&gt;&lt;span class="n"&gt;product_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="mf"&gt;.&lt;/span&gt;&lt;span class="k"&gt;name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+           &lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;OVER&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;PARTITION&lt;/span&gt; &lt;span class="k"&gt;BY&lt;/span&gt; &lt;span class="n"&gt;oi&lt;/span&gt;&lt;span class="mf"&gt;.&lt;/span&gt;&lt;span class="n"&gt;product_id&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;cnt&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+           &lt;span class="n"&gt;tot_order&lt;/span&gt;
+    &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;order_items_messy&lt;/span&gt; &lt;span class="n"&gt;oi&lt;/span&gt;
+        &lt;span class="k"&gt;INNER&lt;/span&gt; &lt;span class="k"&gt;JOIN&lt;/span&gt; &lt;span class="n"&gt;products_messy&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="k"&gt;ON&lt;/span&gt; &lt;span class="n"&gt;oi&lt;/span&gt;&lt;span class="mf"&gt;.&lt;/span&gt;&lt;span class="n"&gt;product_id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="mf"&gt;.&lt;/span&gt;&lt;span class="n"&gt;product_id&lt;/span&gt;
+        &lt;span class="k"&gt;CROSS&lt;/span&gt; &lt;span class="k"&gt;JOIN&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;COUNT&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;DISTINCT&lt;/span&gt; &lt;span class="n"&gt;order_id&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;tot_order&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;order_items_messy&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;t&lt;/span&gt;
+&lt;span class="p"&gt;),&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;However, we get obvious &lt;strong&gt;wrong&lt;/strong&gt; results (the first three rows shown here):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;                    rules                      | expectation | support | confidence | lift
+-----------------------------------------------+-------------+---------+------------+------
+KRO SKM MLK          =&amp;gt;   KRO WHL MLK          | 4.00        | 16.00   | 4.00       | 1.00
+KRO WHL MLK          =&amp;gt;   KRO SKM MLK          | 4.00        | 16.00   | 4.00       | 1.00
+KRO TKY GRND         =&amp;gt;   KRO WHL MLK          | 4.00        | 8.00    | 4.00       | 1.00
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;br&gt;
+All values are supposed to be 1 with only one order. The good news is that we now have a &lt;strong&gt;failing test case&lt;/strong&gt;. Let's figure out what's wrong with the original code.&lt;/p&gt;
+&lt;p&gt;The CTE &lt;code&gt;baskets&lt;/code&gt; is the building block for generating the rules. Its data pipeline is:&lt;/p&gt;
+&lt;p&gt;&lt;img alt src="/res/explain_cte_baskets.png"&gt;&lt;/p&gt;
+&lt;p&gt;The wrong counting happens in the window function, which is in the last step. We want the windown function to calculate the total number of each &lt;strong&gt;unique&lt;/strong&gt; product_id in each order.&lt;/p&gt;
+&lt;p&gt;If we use PostgreSQL and try &lt;code&gt;count(DISTINCT oi.product_id) OVER (PARTITION BY oi.product_id) AS cnt&lt;/code&gt;, we get &lt;code&gt;ERROR: DISTINCT is not implemented for window functions&lt;/code&gt;. So the &lt;code&gt;product_id&lt;/code&gt; has to be unique for each &lt;code&gt;order_id&lt;/code&gt; &lt;strong&gt;before&lt;/strong&gt; being piped into the window function. A common practice is to use GROUP BY.&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+&lt;h3&gt;Refactor the original code&lt;/h3&gt;
+&lt;p&gt;Change the common table expression &lt;code&gt;baskets&lt;/code&gt; to:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;WITH&lt;/span&gt; &lt;span class="n"&gt;baskets&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="c1"&gt;-- baskets of store Messy&lt;/span&gt;
+    &lt;span class="c1"&gt;-- using GROUP BY&lt;/span&gt;
+    &lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;oi&lt;/span&gt;&lt;span class="mf"&gt;.&lt;/span&gt;&lt;span class="n"&gt;order_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;oi&lt;/span&gt;&lt;span class="mf"&gt;.&lt;/span&gt;&lt;span class="n"&gt;product_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="mf"&gt;.&lt;/span&gt;&lt;span class="k"&gt;name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+           &lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;OVER&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;PARTITION&lt;/span&gt; &lt;span class="k"&gt;BY&lt;/span&gt; &lt;span class="n"&gt;oi&lt;/span&gt;&lt;span class="mf"&gt;.&lt;/span&gt;&lt;span class="n"&gt;product_id&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;cnt&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+           &lt;span class="n"&gt;max&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tot_order&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;tot_order&lt;/span&gt;
+    &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;order_items_messy&lt;/span&gt; &lt;span class="n"&gt;oi&lt;/span&gt;
+        &lt;span class="k"&gt;INNER&lt;/span&gt; &lt;span class="k"&gt;JOIN&lt;/span&gt; &lt;span class="n"&gt;products_messy&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="k"&gt;ON&lt;/span&gt; &lt;span class="n"&gt;oi&lt;/span&gt;&lt;span class="mf"&gt;.&lt;/span&gt;&lt;span class="n"&gt;product_id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="mf"&gt;.&lt;/span&gt;&lt;span class="n"&gt;product_id&lt;/span&gt;
+        &lt;span class="k"&gt;CROSS&lt;/span&gt; &lt;span class="k"&gt;JOIN&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;COUNT&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;DISTINCT&lt;/span&gt; &lt;span class="n"&gt;order_id&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;tot_order&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;order_items_messy&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;t&lt;/span&gt;
+        &lt;span class="k"&gt;GROUP&lt;/span&gt; &lt;span class="k"&gt;BY&lt;/span&gt; &lt;span class="n"&gt;oi&lt;/span&gt;&lt;span class="mf"&gt;.&lt;/span&gt;&lt;span class="n"&gt;order_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;oi&lt;/span&gt;&lt;span class="mf"&gt;.&lt;/span&gt;&lt;span class="n"&gt;product_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="mf"&gt;.&lt;/span&gt;&lt;span class="k"&gt;name&lt;/span&gt;
+&lt;span class="p"&gt;),&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;After refactoring we get correct output (the first three rows shown here):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;                    rules                      | expectation | support | confidence | lift
+-----------------------------------------------+-------------+---------+------------+------
+KRO TKY GRND         =&amp;gt;   KRO WHL MLK          | 1.00        | 1.00    | 1.00       | 1.00
+KRO SKM MLK          =&amp;gt;   KRO TKY GRND         | 1.00        | 1.00    | 1.00       | 1.00
+KRO TKY GRND         =&amp;gt;   KRO SKM MLK          | 1.00        | 1.00    | 1.00       | 1.00
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now we have passed the failing test!&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;
+During the first iteration, we have known the data, built a basic association rules extracting function, written a failing test, and refactored the code to pass it. All of these actions are quick and lean. We are now comfortable to move on with more data or extracting complex rules. And remember: writing failing tests for each iteration.&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+&lt;h3&gt;Summary&lt;/h3&gt;
+&lt;p&gt;We have used an example to illustrate how data analysis can work hand in hand with testing to explore and produce results &lt;strong&gt;early and often&lt;/strong&gt;. TDD even advocates writing tests first before coding. Though we don't always have time budget and resources to do this kind of TDD, and during the exploratory phase testing might not be necessary, we keep TDD in mind and practice it if necessary for at least three reasons:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Writing test cases is a process of clarifying objectives of data analysis, and documenting how the code is intended to work. As code becomes more complex, the need for documentation increases.&lt;/li&gt;
+&lt;li&gt;TDD can help mitigate the fear and error of refactoring, modifying features, or adding new features. With test cases, we don't do them at the mercy of luck.&lt;/li&gt;
+&lt;li&gt;When switching from exploratory data analysis phase to production phase, the agile way of TDD can ensure that our data products are on the right track.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;br&gt;
+Thanks for reading!&lt;/p&gt;</content><category term="TDD"></category><category term="Association Rules"></category><category term="SQL"></category></entry><entry><title>About Me</title><link href="https://geweiwang.github.io/2015/12/about-me.html" rel="alternate"></link><published>2015-12-24T00:00:00-05:00</published><updated>2015-12-24T00:00:00-05:00</updated><author><name>Gewei Wang</name></author><id>tag:geweiwang.github.io,2015-12-24:/2015/12/about-me.html</id><summary type="html">&lt;p&gt;A snapshot of me&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;br&gt;
+Hi there,&lt;/p&gt;
+&lt;p&gt;Thank you for visiting!&lt;/p&gt;
+&lt;p&gt;I'm Gewei Wang, a data-cherry picker -- I pick outliers from massive data like:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Customers who are most likely to subscribe a service&lt;/li&gt;
+&lt;li&gt;Products that match some target groups&lt;/li&gt;
+&lt;li&gt;Search results that are most likely to be clicked&lt;/li&gt;
+&lt;li&gt;Stocks that consist of a optimal portfolio&lt;/li&gt;
+&lt;li&gt;Fraud SMS senders&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I bake cookies biweekly. What I've found in baking is:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;recipes are simply algorithms&lt;/li&gt;
+&lt;li&gt;I often have to tune a recipe to get the optimal result, even though the recipe is from some classic cookbooks&lt;/li&gt;
+&lt;li&gt;baking is rewarding: I can enjoy cookies myself, and can easily share them with people as well&lt;/li&gt;
+&lt;li&gt;the world of baking is so rich and deep that I can always be excited about some new things&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The common things of data-cherry picking and baking is the sheer pleasure of magic, the transformation of something into profitable data products or delicious cookies.&lt;/p&gt;</content></entry></feed>
